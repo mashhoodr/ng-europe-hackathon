@@ -1,3 +1,57 @@
-<p>
-  manage works!
-</p>
+<h2>Manage Data</h2>
+
+<div class="row">
+
+  <div class="col-md-3">
+    <h4>Add Client</h4>
+    <form #clientForm="ngForm">
+      <label>Company name</label>
+      <input type="text" class="form-control" ngModel required name="companyName" />
+      
+      <label>Conact person name</label>
+      <input type="text" class="form-control" ngModel required name="companyContactPerson" />
+
+      <label>Phone</label>
+      <input type="text" class="form-control" ngModel required name="companyPhone" />
+
+      <label>Company Address</label>
+      <input type="text" class="form-control" ngModel required name="companyAddress" />
+
+      <label>Last Visited</label>
+      <input type="date" class="form-control" ngModel required name="companyLastVisited" />
+
+      <a (click)="addClient(clientForm)" class="btn btn-block btn-success" [ngClass]="{ disabled: !clientForm.valid }">Add Client</a>
+    </form>
+  </div>
+
+  <div class="col-md-3">
+    <h4>Add Machine</h4>
+
+    <form #machineForm="ngForm">
+      <label>Company name</label>
+      <select ngModel class="form-control" required name="machineClient">
+        <option *ngFor="let item of clients | async" [value]="item.$key">
+          {{ item.companyName }}
+        </option>
+      </select>
+
+      <label>Machine ID</label>
+      <input type="text" class="form-control" ngModel required name="machineId" />
+
+      <label>Label</label>
+      <input type="text" class="form-control" ngModel required name="machineLabel" />
+
+      <label>Last Serviced</label>
+      <input type="date" class="form-control" ngModel required name="machineService" />
+      
+      <a (click)="addMachine(machineForm)" class="btn btn-block btn-success" [ngClass]="{ disabled: !machineForm.valid }">Add Machine</a>
+    </form>
+  </div>
+  
+</div>
+
+<h3>Clients</h3>
+
+<ag-grid-ng2 #agGrid style="width: 100%; height: 400px;" class="ag-blue"
+    [gridOptions]="gridOptions" [rowData]="clients | async" (modelUpdated)="onModelUpdated($event)">
+</ag-grid-ng2>

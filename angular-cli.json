@@ -18,9 +18,11 @@
         "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/ag-grid/dist/styles/ag-grid.css",
-        "../node_modules/ag-grid/dist/styles/theme-fresh.css"
+        "../node_modules/ag-grid/dist/styles/theme-blue.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/moment/moment.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

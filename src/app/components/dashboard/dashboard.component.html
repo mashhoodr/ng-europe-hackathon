@@ -1,13 +1,8 @@
 
 <h3>Dashboard</h3>
 
-<h5>Latest status of each machine</h5>
-<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item | json}}
-  </li>
-</ul>
+<h5>Latest message from each machine</h5>
 
-<ag-grid-ng2 #agGrid class="ag-fresh"
-    [gridOptions]="gridOptions">
+<ag-grid-ng2 #agGrid style="width: 100%; height: 200px;" class="ag-blue"
+    [gridOptions]="gridOptions" [rowData]="items | async">
 </ag-grid-ng2>
