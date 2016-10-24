@@ -19,6 +19,9 @@ export class DashboardComponent implements OnInit {
     this.gridOptions.enableColResize = true;
     this.gridOptions.enableSorting = true;
     this.gridOptions.enableFilter = true;
+    this.gridOptions.onGridReady = (params) => {
+        params.api.sizeColumnsToFit();
+    };
   }
 
   ngOnInit() {
@@ -34,7 +37,7 @@ export class DashboardComponent implements OnInit {
             {
                 headerName: "Message",
                 field: "message",
-                width: 500
+                width: 700
             },
             {
                 headerName: "MachineID",

@@ -21,7 +21,6 @@ export class ManageComponent implements OnInit {
     this.gridOptions.enableSorting = true;
     this.gridOptions.enableFilter = true;  
     this.gridOptions.getRowHeight = (params) => {
-        console.log(params);
         let count = 2;
         if(params.data.machines) {
           count = (Object.keys(params.data.machines).length + 1);
@@ -79,7 +78,6 @@ export class ManageComponent implements OnInit {
               cellRenderer: (params) => {
                 if(!params.value) return '';
                 let append = '';
-                console.log('==>', params.value);
                 for(let machineIndex in params.value) {
                   let machine = params.value[machineIndex];
                   append += `${machine.machineLabel} ${machine.machineService} <br />`;
